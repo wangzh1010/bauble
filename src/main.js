@@ -5,15 +5,19 @@ import App from './App'
 import router from './router'
 import iView from 'iview'
 import 'iview/dist/styles/iview.css'
+import store from './store'
+import Alert from './components/alert'
 
 Vue.config.productionTip = false
 
 Vue.use(iView)
+Vue.component('alert', Alert);
 
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
-  router,
-  template: '<App/>',
-  components: { App }
+    el: '#app',
+    router,
+    store,
+    template: '<App/>',
+    components: { App }
 })
