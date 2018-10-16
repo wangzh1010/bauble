@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="main">
         <p>login status : {{isLogin ? 'login' : 'unlogin'}}</p>
         <p v-show="loading">loading</p>
         <p v-show="isLoading" style="color: #ff9900;">loading2</p>

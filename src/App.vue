@@ -12,12 +12,13 @@
                     <li>
                         <router-link :to="{name:'Foo'}">Foo</router-link>
                     </li>
+                    <li>
+                        <router-link :to="{name:'Case'}">Case</router-link>
+                    </li>
                 </ul>
             </div>
         </nav>
-        <div class="main">
-            <router-view></router-view>
-        </div>
+        <router-view></router-view>
     </div>
 </template>
 <script>
@@ -78,5 +79,11 @@ nav ul li a:hover{
 .main{
     width: 1190px;
     margin: 0px auto;
+}
+.main:after{
+  content: '';
+  display: block;
+  clear: both;
+  visibility: hidden;
 }
 </style>

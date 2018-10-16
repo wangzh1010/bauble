@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="main">
         <span>count : {{count}}</span>
         <div class="group">
             <Button @click="add">increase</Button>
@@ -12,7 +12,7 @@
         <p>defaultCounter : {{defaultCounter}}</p>
         <p>doneTodosCount : {{doneTodosCount}}</p>
         <div class="group">
-            <p v-for="(todo,index) in doneTodos" :key="index">done: {{todo}}</p>            
+            <p v-for="(todo,index) in doneTodos" :key="index">done: {{todo}}</p>
             <p v-for="(todo,index) in unDoneAlias" :key="index">undone : {{todo}}</p>
         </div>
         <div class="group">
