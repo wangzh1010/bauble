@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="book-container">
     <div class="book">
       <ul>
         <li class="paper" data-right>
@@ -124,7 +124,7 @@ export default {
   transform-style: preserve-3d;
 }
 
-img {
+.paper img {
   width: 150px;
   vertical-align: middle;
 }

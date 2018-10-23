@@ -8,12 +8,12 @@ import 'iview/dist/styles/iview.css'
 import './css/common.css'
 import 'animate.css'
 import store from './store'
-import Alert from './components/alert'
+import Modal from './components/Modal'
 
 Vue.config.productionTip = false
 
 Vue.use(iView)
-Vue.component('alert', Alert);
+Vue.component('Modal', Modal);
 
 /* eslint-disable no-new */
 new Vue({

@@ -11,6 +11,9 @@
                 <li>
                     <router-link :to="{name:'Accordion'}">折叠面板</router-link>
                 </li>
+                <li>
+                    <router-link :to="{name:'Zoom'}">放大镜</router-link>
+                </li>
             </ul>
         </div>
         <div class="right-content">

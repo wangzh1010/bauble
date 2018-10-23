@@ -7,6 +7,7 @@
                     <li v-for="(msg,index) in message" :key="index">{{msg}}</li>
                 </ul>
             </div>
+            <div class="modal-footer"></div>
         </div>
     </div>
 </template>

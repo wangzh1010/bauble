@@ -1,5 +1,5 @@
 <template>
-    <div class="accordion-box">
+    <div class="accordion-container">
         <ul>
             <li :class="{'expand':item.expand}" v-for="(item,index) in list">
                 <p class="title" @click="expand($event,index)">{{item.title}}{{index + 1}}</p>
@@ -36,24 +36,24 @@
     }
 </script>
 <style type="text/css">
-.accordion-box {
+.accordion-container {
     width: 200px;
     margin: 50px 100px;
     border: 1px solid #e6e6e6;
 }
 
-.accordion-box .content {
+.accordion-container .content {
     height: 0px;
     overflow: hidden;
     transition: height 0.5s;
     -webkit-transition: height 0.5s;
 }
 
-.accordion-box .content>div {
+.accordion-container .content>div {
     padding: 6px 12px;
 }
 
-.accordion-box .title {
+.accordion-container .title {
     padding: 0px 12px;
     height: 30px;
     line-height: 30px;
@@ -61,15 +61,15 @@
     cursor: pointer;
 }
 
-.accordion-box li {
+.accordion-container li {
     border-bottom: 1px solid #e6e6e6;
 }
 
-.accordion-box li:last-child {
+.accordion-container li:last-child {
     border-bottom-width: 0px;
 }
 
-.accordion-box .title::after {
+.accordion-container .title::after {
     content: '';
     position: absolute;
     top: 10px;
@@ -83,11 +83,11 @@
     -webkit-transition: transform 0.3s;
 }
 
-.accordion-box .expand .title {
+.accordion-container .expand .title {
     background-color: #e6e6e6;
 }
 
-.accordion-box .expand .title:after{
+.accordion-container .expand .title:after{
     transform: rotate(90deg)
 }
 

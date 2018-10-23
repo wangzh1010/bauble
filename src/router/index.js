@@ -6,6 +6,8 @@ import Case from '@/components/Case'
 import Book from '@/views/Book'
 import Drag from '@/views/Drag'
 import Accordion from '@/views/Accordion'
+import Modal from '@/views/Modal'
+import Zoom from '@/views/Zoom'
 
 Vue.use(Router)
 
@@ -36,6 +38,14 @@ export default new Router({
             path:'accordion',
             name:'Accordion',
             component:Accordion
+        },{
+            path:'modal',
+            name:'Modal',
+            component:Modal
+        },{
+            path:'zoom',
+            name:'Zoom',
+            component:Zoom
         }]
     },{
         path:'*',

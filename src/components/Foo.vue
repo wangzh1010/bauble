@@ -24,7 +24,7 @@
         <div class="group">
             <Button type="info" @click="showModal">show Modal</Button>
         </div>
-        <alert :message="message"></alert>
+        <Modal :message="message"></Modal>
     </div>
 </template>
 <script type="text/javascript">

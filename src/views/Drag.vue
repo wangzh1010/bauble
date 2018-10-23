@@ -1,5 +1,5 @@
 <template>
-    <div class="drag-wrapper">
+    <div class="drag-container">
         <p class="title">拖拽图片到选框</p>
         <ul>
             <li>
@@ -45,8 +45,8 @@
     }
 </script>
 <style type="text/css">
-    .drag-wrapper >.title{margin-bottom: 10px;}
-    .drag-wrapper ul li{
+    .drag-container >.title{margin-bottom: 10px;}
+    .drag-container ul li{
         float: left;margin-right: 20px;
     }
     .box{

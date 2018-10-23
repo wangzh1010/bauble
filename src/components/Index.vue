@@ -19,7 +19,7 @@
             <Button type="info" @click="doLogout2">Login Out 2</Button>
         </div>
         <Button type="info" @click="showModal">show Modal</Button>
-        <alert :message="message"></alert>
+        <Modal :message="message"></Modal>
     </div>
 </template>
 <script type="text/javascript">
