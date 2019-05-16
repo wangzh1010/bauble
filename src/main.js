@@ -6,7 +6,6 @@ import router from './router'
 import iView from 'iview'
 import 'iview/dist/styles/iview.css'
 import './css/common.css'
-import 'animate.css'
 import store from './store'
 import Modal from './components/Modal'
 

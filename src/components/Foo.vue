@@ -1,105 +1,74 @@
 <template>
     <div class="main">
-        <span>count : {{count}}</span>
+        <p>login status : {{isLogin ? 'login' : 'unlogin'}}</p>
+        <p v-show="loading">loading</p>
+        <p v-show="isLoading" style="color: #ff9900;">loading2</p>
         <div class="group">
-            <Button @click="add">increase</Button>
-            <Button type="primary" @click="decrease">decrease</Button>
-            <Button type="warning" @click="add10">increase10</Button>
-        </div>
-
-        <p>countPlusLocal : {{countPlusLocal}}</p>
-        <p>countAlias : {{countAlias}}</p>
-        <p>defaultCounter : {{defaultCounter}}</p>
-        <p>doneTodosCount : {{doneTodosCount}}</p>
-        <div class="group">
-            <p v-for="(todo,index) in doneTodos" :key="index">done: {{todo}}</p>
-            <p v-for="(todo,index) in unDoneAlias" :key="index">undone : {{todo}}</p>
+            1: mapMutations
+            <Button type="info" @click="doLogin">Login</Button>
+            <Button type="info" @click="doLogout">Login Out</Button>
         </div>
         <div class="group">
-            异步Actions
-            <p> count:  {{count}}</p>
-            <Button type="info" @click="increase2">increase</Button>
-            <Button type="info" @click="decreaseMapping">decrease</Button>
+            2: mapActions
+            <Button type="info" @click="doLogin1">Login 1</Button>
+            <Button type="info" @click="doLogout1">Login Out 1</Button>
         </div>
         <div class="group">
-            <Button type="info" @click="showModal">show Modal</Button>
+            3: commit mutation dispatch action
+            <Button type="info" @click="doLogin2">Login 2</Button>
+            <Button type="info" @click="doLogout2">Login Out 2</Button>
         </div>
-        <Modal :message="message"></Modal>
+        <Button type="info" @click="showModal">show Modal</Button>
+        <Modal></Modal>
     </div>
 </template>
 <script type="text/javascript">
 import {
     mapState,
-    mapGetters,
     mapMutations,
     mapActions
 } from 'vuex'
-import * as types from '../store/mutation-types'
+import {DO_LOGIN, DO_LOGOUT, DO_LOGIN_1, DO_LOGOUT_1, SHOW_MODAL} from '../store/mutation-types'
 export default {
     data: function() {
         return {
-            counter: 10,
-            localCount: 100,
-            book: {
-                w: 10,
-                h: 5,
-                l: 12
-            },
-            message: ['a: 1', 'b: 2', 'c: 3']
+            isLoading: false,
+            message: ['status: 200', 'body: ok', 'url: /index']
         }
     },
     methods: {
         ...mapMutations({
-            add: types.INCREASE,
-            decrease: types.DECREASE,
-            showModal: types.SHOW_MODAL
+            doLogin: DO_LOGIN,
+            doLogout: DO_LOGOUT,
+            showModal: SHOW_MODAL
         }),
         ...mapActions({
-            increase2: 'increase'
+            doLogin1: DO_LOGIN_1,
+            doLogout1: DO_LOGOUT_1
         }),
-        ...mapActions(['decreaseMapping']),
-        add10() {
-            this.$store.commit({
-                type: types.INCREASE,
-                base: 10
+        doLogin2() {
+            this.$store.commit(DO_LOGIN);
+        },
+        doLogout2: function() {
+            this.isLoading = true;
+            this.$store.dispatch('doLogout2').then(() => {
+                this.isLoading = false;
             })
-        },
-        increase1() {
-            this.$store.commit(types.INCREASE)
-        },
-        decrease1() {
-            this.$store.commit(types.DECREASE)
-        },
-        increase22() {
-            this.$store.dispatch('increase')
-        },
-        decrease2() {
-            this.$store.dispatch('decrease')
         }
     },
     computed: {
-        defaultCounter() {
-            return this.counter + 11
-        },
-        ...mapGetters(['doneTodosCount', 'doneTodos']),
-        ...mapGetters({
-            unDoneAlias: 'unDone'
-        }),
         ...mapState({
-            count: state => state.count,
-            countAlias: 'count',
-            countPlusLocal: function(state) {
-                return state.count + this.localCount
-            }
+            isLogin: state => state.Login.loginStatus,
+            loading: state => state.Login.loading
         })
+    },
+    components: {
+
     }
 }
 </script>
-<style>
+<style type="text/css">
     .group{
         padding: 10px 0px;
-    }
-    p{
-        margin: 8px 0px;
     }
 </style>

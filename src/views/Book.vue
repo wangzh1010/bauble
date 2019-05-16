@@ -105,7 +105,7 @@ export default {
 }
 
 </script>
-<style type="text/css">
+<style scoped type="text/css">
 .book {
   margin: 30px 0px;
 }

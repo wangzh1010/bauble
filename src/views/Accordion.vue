@@ -1,7 +1,7 @@
 <template>
     <div class="accordion-container">
         <ul>
-            <li :class="{'expand':item.expand}" v-for="(item,index) in list">
+            <li :class="{'expand':item.expand}" v-for="(item,index) in list" :key="index">
                 <p class="title" @click="expand($event,index)">{{item.title}}{{index + 1}}</p>
                 <div class="content">
                     <div v-html="item.content"></div>
@@ -35,7 +35,7 @@
         }
     }
 </script>
-<style type="text/css">
+<style scoped type="text/css">
 .accordion-container {
     width: 200px;
     margin: 50px 100px;

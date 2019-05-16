@@ -76,7 +76,7 @@ export default {
 }
 
 </script>
-<style type="text/css">
+<style scoped type="text/css">
 .zoom-container {
     display: flex;
     justify-content: flex-start;

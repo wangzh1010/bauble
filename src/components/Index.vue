@@ -1,74 +1,54 @@
 <template>
     <div class="main">
-        <p>login status : {{isLogin ? 'login' : 'unlogin'}}</p>
-        <p v-show="loading">loading</p>
-        <p v-show="isLoading" style="color: #ff9900;">loading2</p>
-        <div class="group">
-            1: mapMutations
-            <Button type="info" @click="doLogin">Login</Button>
-            <Button type="info" @click="doLogout">Login Out</Button>
+        <div class="left-nav">
+            <ul>
+                <li>
+                    <router-link :to="{name:'Book'}">翻书效果</router-link>
+                </li>
+                <li>
+                    <router-link :to="{name:'Drag'}">图片拖拽</router-link>
+                </li>
+                <li>
+                    <router-link :to="{name:'Accordion'}">折叠面板</router-link>
+                </li>
+                <li>
+                    <router-link :to="{name:'Zoom'}">放大镜</router-link>
+                </li>
+                <li>
+                    <router-link :to="{name:'Flop'}">例子</router-link>
+                </li>
+            </ul>
         </div>
-        <div class="group">
-            2: mapActions
-            <Button type="info" @click="doLogin1">Login 1</Button>
-            <Button type="info" @click="doLogout1">Login Out 1</Button>
+        <div class="right-content">
+            <router-view></router-view>
         </div>
-        <div class="group">
-            3: commit mutation dispatch action
-            <Button type="info" @click="doLogin2">Login 2</Button>
-            <Button type="info" @click="doLogout2">Login Out 2</Button>
-        </div>
-        <Button type="info" @click="showModal">show Modal</Button>
-        <Modal :message="message"></Modal>
     </div>
 </template>
-<script type="text/javascript">
-import {
-    mapState,
-    mapMutations,
-    mapActions
-} from 'vuex'
-import {DO_LOGIN, DO_LOGOUT, DO_LOGIN_1, DO_LOGOUT_1, SHOW_MODAL} from '../store/mutation-types'
-export default {
-    data: function() {
-        return {
-            isLoading: false,
-            message: ['status: 200', 'body: ok', 'url: /index']
-        }
-    },
-    methods: {
-        ...mapMutations({
-            doLogin: DO_LOGIN,
-            doLogout: DO_LOGOUT,
-            showModal: SHOW_MODAL
-        }),
-        ...mapActions({
-            doLogin1: DO_LOGIN_1,
-            doLogout1: DO_LOGOUT_1
-        }),
-        doLogin2() {
-            this.$store.commit(DO_LOGIN);
-        },
-        doLogout2: function() {
-            this.isLoading = true;
-            this.$store.dispatch('doLogout2').then(() => {
-                this.isLoading = false;
-            })
-        }
-    },
-    computed: {
-        ...mapState({
-            isLogin: state => state.Login.loginStatus,
-            loading: state => state.Login.loading
-        })
-    },
-    components: {
+<style type="text/css">
+    .left-nav{
+        width: 200px;
+        float: left;
+        font-size: 14px;
+        background-color: #ffffff;border: 1px solid #e6e6e6;
+        margin-top: 20px;
+    }
+    .left-nav ul li{
+        height: 40px;
+        line-height: 40px;
 
     }
-}
-</script>
-<style type="text/css">
-    .group{
-        padding: 10px 0px;
+    .left-nav ul li a{
+        display: block;
+        padding-left: 50px;
+    }
+    .left-nav ul li .current{
+        background-color: #3399ff;
+        color: #ffffff;
+    }
+    .right-content{
+        float: right;width: 973px;border: 1px solid #e6e6e6;
+        background-color: #ffffff;
+        margin-top: 20px;
+        padding: 20px 30px;
     }
 </style>

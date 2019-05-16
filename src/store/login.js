@@ -17,6 +17,7 @@ export default {
     },
     actions: {
         [DO_LOGIN_1]({ state, commit }) {
+            console.log(111111)
             state.loading = true;
             setTimeout(() => {
                 commit(DO_LOGIN);

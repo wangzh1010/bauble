@@ -1,75 +1,80 @@
 <template>
-    <div v-show="notify" class="modal">
+    <div v-show="show" class="modal">
         <div id="dialog" class="modal-dialog">
-            <div class="modal-header"><a href="javascript:;" class="close" @click="hideModal">&times;</a></div>
-            <div class="modal-body">
-                <ul>
-                    <li v-for="(msg,index) in message" :key="index">{{msg}}</li>
-                </ul>
+            <div class="modal-contetn">
+                <div class="modal-header">
+                    <slot name="title"></slot>
+                    <a class="close" href="javascript:;" @click="hideModal">&times;</a>
+                </div>
+                <div class="modal-body">
+                    <slot name="body"></slot>
+                </div>
+                <div class="modal-footer">
+                    <slot name="footer"></slot>
+                </div>
             </div>
-            <div class="modal-footer"></div>
         </div>
     </div>
 </template>
 
 <script type="text/javascript">
-    import {mapState, mapMutations} from 'vuex'
-    import {HIDE_MODAL} from '../store/mutation-types'
-    export default{
-        props: {
-            message: Array
-        },
-        mounted() {
-            var winHeight = window.innerHeight;
-            var modal = document.getElementById('dialog');
-            var offsetTop = (winHeight - modal.offsetHeight) / 2
-            modal.style.top = offsetTop + 'px';
-        },
-        methods: {
-            ...mapMutations({
-                hideModal: HIDE_MODAL
-            })
-        },
-        computed: {
-            ...mapState({
-                notify: state => state.notify
-            })
-        }
-    }
+export default {
+  data() {
+    return {
+      show: false
+    };
+  },
+  methods: {
+      showModal(){
+          this.show = true;
+      },
+      hideModal(){
+          this.show = false;
+      }
+  }
+};
 </script>
 <style type="text/css">
-    .modal{
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0,0,0,0.4);
-        z-index: 999;
-    }
-    .modal-dialog{
-        position: absolute;
-        width:400px;
-        background-color: #ffffff;
-        z-index: 1000;
-        left: 50%;
-        margin-left: -200px;
-        border-radius: 5px;
-    }
-    .modal-header{
-        height: 30px;
-    }
-    .close{
-        float: right;
-        margin-right: 5px;
-        margin-top: 5px;
-        font-size: 20px;
-    }
-    .modal-body{
-        padding: 10px 15px;
-    }
-    .modal-body ul li{
-        height: 24px;
-        line-height: 24px;
-    }
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 999;
+}
+.modal-dialog {
+  position: absolute;
+  width: 400px;
+  background-color: #ffffff;
+  z-index: 1000;
+  left: 50%;
+  top: 50%;
+  border-radius: 5px;
+  transform: translate(-50%,-50%);
+}
+.modal-header {
+    padding: 15px 20px;
+    height: 54px;
+    line-height: 24px;
+}
+.modal-title{
+    float: left;
+    font-size: 14px;
+    font-weight: bold;
+}
+.close {
+  float: right;
+  font-size: 16px;
+}
+.modal-body {
+  padding: 15px 20px;
+}
+.ivu-input-wrapper{
+    margin-bottom: 15px;
+}
+.modal-footer {
+    padding: 15px 20px;
+}
 </style>

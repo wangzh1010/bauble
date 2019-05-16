@@ -35,6 +35,7 @@
                 let img = document.createElement('img');
                 img.onload = function(){
                     box2.appendChild(img);
+                    URL.revokeObjectURL(url)
                 }
                 img.src = url;
             },
@@ -44,7 +45,7 @@
         }
     }
 </script>
-<style type="text/css">
+<style scoped type="text/css">
     .drag-container >.title{margin-bottom: 10px;}
     .drag-container ul li{
         float: left;margin-right: 20px;
